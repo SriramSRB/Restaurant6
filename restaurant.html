@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUMIÈRE | Modern Dining</title>
+    <style>
+        :root { --bg: #f4f4f6; --text: #222; --accent: #8b7355; --white: #ffffff; }
+        
+        * { box-sizing: border-box; }
+        
+        body { 
+            margin: 0; 
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+            background: var(--bg); 
+            color: var(--text); 
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        header { 
+            padding: 1.5rem 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: fixed; 
+            top: 0;
+            width: 100%; 
+            background: rgba(255, 255, 255, 0.95); 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 100; 
+            backdrop-filter: blur(5px);
+        }
+        
+        .logo { font-size: 1.5rem; font-weight: bold; letter-spacing: 3px; }
+        nav a { margin-left: 2rem; text-decoration: none; color: var(--text); font-size: 0.9rem; text-transform: uppercase; font-weight: 500; transition: color 0.3s;}
+        nav a:hover { color: var(--accent); }
+        
+        /* General Section Styling */
+        section { padding: 100px 10%; }
+        h2 { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: var(--text); letter-spacing: 1px; }
+        
+        /* Hero Section */
+        .hero { 
+            height: 100vh; /* Only the hero gets full screen height */
+            padding: 0 5%;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.pexels.com/photos/262047/pexels-photo-262047.jpeg?auto=compress&cs=tinysrgb&w=2000') center/cover; 
+            color: var(--white); 
+            align-items: center; 
+            text-align: center; 
+        }
+        .hero h1 { font-size: 5rem; letter-spacing: 8px; margin-bottom: 10px; text-shadow: 2px 2px 15px rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.2rem; letter-spacing: 2px; text-shadow: 1px 1px 5px rgba(0,0,0,0.5); }
+        
+        /* Menu Section */
+        .menu-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 2.5rem; 
+        }
+        .menu-item { 
+            background: var(--white); 
+            padding: 2rem; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03); 
+            transition: transform 0.3s;
+        }
+        .menu-item:hover { transform: translateY(-5px); }
+        .menu-item h3 { 
+            margin: 0 0 1rem 0; 
+            display: flex; 
+            justify-content: space-between; 
+            font-size: 1.3rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+        .menu-item h3 span:last-child { color: var(--accent); font-weight: normal; }
+        .menu-item p { margin: 0; color: #666; font-size: 0.95rem; }
+        
+        /* Location Section */
+        .split { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 4rem; 
+            align-items: center; 
+            background: var(--white);
+        }
+        .split h2 { text-align: left; margin-bottom: 1rem; }
+        .split p { font-size: 1.1rem; color: #555; }
+        img.location-img { 
+            width: 100%; 
+            height: 400px; 
+            object-fit: cover; 
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        /* Booking Section */
+        #book { background: var(--bg); }
+        .booking-form { 
+            max-width: 600px; /* Constrains the width so it doesn't look stretched */
+            margin: 0 auto; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 1.2rem; 
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        input, select, button { 
+            padding: 1rem; 
+            border: 1px solid #ddd; 
+            font-size: 1rem; 
+            border-radius: 6px;
+            outline: none;
+            font-family: inherit;
+        }
+        input:focus, select:focus { border-color: var(--accent); }
+        button { 
+            background: var(--text); 
+            color: var(--white); 
+            cursor: pointer; 
+            transition: 0.3s; 
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 1rem;
+        }
+        button:hover { background: var(--accent); }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .split { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+            .split h2 { text-align: center; }
+            section { padding: 80px 5%; }
+            .hero h1 { font-size: 3.5rem; }
+            nav { display: none; } /* Consider adding a hamburger menu later */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">LUMIÈRE</div>
+        <nav>
+            <a href="#menu">Menu</a>
+            <a href="#location">Location</a>
+            <a href="#book">Book</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>LUMIÈRE</h1>
+        <p>Minimalist Cuisine. Maximum Flavor.</p>
+    </section>
+
+    <section id="menu">
+        <h2>Curated Menu</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <h3><span>Wild Mushroom Risotto</span> <span>$24</span></h3>
+                <p>Truffle oil, aged parmesan, micro-greens.</p>
+            </div>
+            <div class="menu-item">
+                <h3><span>Pan-Seared Scallops</span> <span>$32</span></h3>
+                <p>Cauliflower purée, caper brown butter.</p>
+            </div>
+            <div class="menu-item">
+                <h3><span>Wagyu Ribeye</span> <span>$65</span></h3>
+                <p>Charred asparagus, bone marrow jus.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="location" class="split">
+        <div>
+            <h2>Find Us</h2>
+            <p>123 Culinary Avenue, Metro District.<br>Open Tue-Sun: 5PM - 11PM</p>
+        </div>
+        <img src="https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?auto=compress&cs=tinysrgb&w=1000" class="location-img" alt="Restaurant Interior">
+    </section>
+
+    <section id="book">
+        <h2>Reserve a Table</h2>
+        <form class="booking-form" action="/api/book" method="POST">
+            <input type="text" placeholder="Full Name" required>
+            <input type="email" placeholder="Email Address" required>
+            <input type="datetime-local" required>
+            <select required>
+                <option value="" disabled selected>Select Guests</option>
+                <option value="2">2 Guests</option>
+                <option value="4">4 Guests</option>
+                <option value="6+">6+ Guests</option>
+            </select>
+            <button type="submit">Confirm Booking</button>
+        </form>
+    </section>
+
+</body>
+</html>
