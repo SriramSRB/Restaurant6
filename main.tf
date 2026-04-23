@@ -7,12 +7,12 @@ resource "aws_vpc" "restaurant_vpc" {
     tags = { Name = "restaurant-vpc" }
 }
 
-resource "aws_subnet" "restaurant_subent" {
+resource "aws_subnet" "restaurant_subnet" {
     vpc_id                  = aws_vpc.restaurant_vpc.id
     cidr_block              = "10.0.0.0/21"
     map_public_ip_on_launch = true
     availability_zone       = "ap-south-1a"
-    tags                    = { Name = "restaurant-subent" }
+    tags                    = { Name = "restaurant-subnet" }
 }
 
 resource "aws_internet_gateway" "igw" {
@@ -28,7 +28,7 @@ resource "aws_route_table" "restaurant_rt" {
 }
 
 resource "aws_route_table_association" "restaurant_association" {
-    subent_id      = aws_subnet.restaurant_subent.id
+    subnet_id      = aws_subnet.restaurant_subnet.id
     route_table_id = aws_route_table.restaurant_rt.id
 }
 
@@ -77,7 +77,7 @@ resource "aws_instance" "restaurant_server" {
     ami                    = "ami-05d2d839d4f73aafb"
     instance_type          = "m7i-flex.large"
     vpc_security_group_ids = [aws_security_group.restaurant_sg.id]
-    subent_id              = aws_subnet.restaurant_subent.id
+    subnet_id              = aws_subnet.restaurant_subnet.id
     key_name               = aws_key_pair.restaurant_key.key_name
 
     root_block_device {
